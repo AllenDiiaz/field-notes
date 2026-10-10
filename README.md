@@ -25,7 +25,3 @@
 ## How to read
 
 Open an issue from the table above, or browse them all at **[allendiiaz.github.io/field-notes](https://allendiiaz.github.io/field-notes/)**. Each issue is a single page with English and 中文 side by side.
-
-## Disclaimer
-
-These are personal notes. They are **not** official content of, and are not affiliated with or endorsed by, MIT, MIT LGO, Advantech (研華), or NVIDIA. Please do not redistribute or repost.
