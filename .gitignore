@@ -1,0 +1,20 @@
+# --- Never commit unencrypted sources -------------------------------
+# Plain-text originals live only in ~/notes-private/ (outside this repo).
+*.plain.html
+*.plain.*
+*.src.html
+plain/
+private/
+notes-private/
+
+# StaticCrypt working output and config (contains the salt)
+encrypted/
+.staticrypt.json
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+node_modules/

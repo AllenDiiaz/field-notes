@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Field Notes: MIT LGO Session</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --mit: #A31F34;        /* MIT red */
+    --adv: #00529B;        /* Advantech blue */
+    --nv:  #76B900;        /* NVIDIA green */
+    --bg: #f5f5f4;
+    --paper: #ffffff;
+    --ink: #1c1c1e;
+    --muted: #6e6e73;
+    --zh: #4a4a4f;
+    --rule: #e5e5e7;
+    --nv-soft: #f3f9e6;
+    --mit-soft: #fbeef0;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --mit: #e2687c;
+      --adv: #5aa3e6;
+      --nv:  #8fd11a;
+      --bg: #111112;
+      --paper: #1b1b1d;
+      --ink: #ededf0;
+      --muted: #9a9aa0;
+      --zh: #c2c2c8;
+      --rule: #2e2e32;
+      --nv-soft: #1d2612;
+      --mit-soft: #2a1a1d;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink);
+         font: 16.5px/1.7 "Inter", "Noto Sans TC", system-ui, sans-serif; }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 40px 16px 72px; }
+  .paper { background: var(--paper); border: 1px solid var(--rule); border-radius: 4px; overflow: hidden; }
+  .stripe { display: flex; height: 6px; }
+  .stripe span { flex: 1; }
+  .inner { padding: 40px 44px 32px; }
+  @media (max-width: 600px) { .inner { padding: 26px 18px; } .wrap { padding: 16px 10px 40px; } }
+
+  .kicker { font-size: 12px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--mit); }
+  h1 { font-size: 32px; line-height: 1.2; font-weight: 700; margin: 8px 0 4px; letter-spacing: -.01em; }
+  .h1-zh { font-family: "Noto Sans TC", sans-serif; font-size: 20px; font-weight: 500; color: var(--zh); margin: 0 0 12px; }
+  .meta { color: var(--muted); font-size: 13.5px; border-bottom: 1px solid var(--rule); padding-bottom: 20px; margin-bottom: 26px; }
+
+  h2 { font-size: 21px; font-weight: 700; margin: 42px 0 2px; display: flex; gap: 10px; align-items: baseline; }
+  h2 .num { color: var(--mit); font-size: 14px; font-weight: 600; letter-spacing: .06em; }
+  h2 .zh { font-family: "Noto Sans TC", sans-serif; font-size: 16px; font-weight: 500; color: var(--muted); }
+  h3 { font-size: 13px; text-transform: uppercase; letter-spacing: .1em; color: var(--adv); margin: 24px 0 6px; font-weight: 600; }
+  h3 .zh { text-transform: none; letter-spacing: 0; font-family: "Noto Sans TC", sans-serif; color: var(--muted); font-weight: 500; margin-left: 6px; }
+
+  /* bilingual pair: English, then Chinese */
+  .bi { margin: 0 0 14px; }
+  .bi .en { margin: 0; }
+  .bi .zh { margin: 4px 0 0; padding-left: 12px; border-left: 2px solid var(--rule);
+            font-family: "Noto Sans TC", sans-serif; font-size: 15px; color: var(--zh); line-height: 1.75; }
+  ul.bil { list-style: none; padding: 0; margin: 0 0 14px; }
+  ul.bil > li { position: relative; padding-left: 18px; margin-bottom: 12px; }
+  ul.bil > li::before { content: ""; position: absolute; left: 2px; top: .7em; width: 6px; height: 6px; border-radius: 50%; background: var(--adv); }
+
+  a { color: var(--adv); }
+  .tag { display: inline-block; font-size: 10.5px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase;
+         border: 1px solid var(--rule); border-radius: 99px; padding: 0 7px; color: var(--muted); vertical-align: 1px; }
+
+  .note { border: 1px solid var(--rule); border-left: 3px solid var(--adv); border-radius: 3px; padding: 12px 16px; margin: 0 0 8px; font-size: 14.5px; }
+  .pull { border-left: 3px solid var(--mit); background: var(--mit-soft); padding: 14px 18px; margin: 20px 0; border-radius: 0 3px 3px 0; }
+  .pull .en { font-size: 19px; font-weight: 600; }
+  .card { background: var(--nv-soft); border-left: 3px solid var(--nv); padding: 16px 18px 4px; margin: 16px 0; border-radius: 0 3px 3px 0; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 14.5px; margin: 10px 0 16px; }
+  td { border-top: 1px solid var(--rule); padding: 9px 6px; vertical-align: top; }
+  td:first-child { color: var(--muted); width: 30%; font-weight: 500; }
+  td .zh { display: block; font-family: "Noto Sans TC", sans-serif; color: var(--zh); font-size: 14px; margin-top: 2px; }
+  td:first-child .zh { color: var(--muted); }
+
+  footer { margin-top: 40px; padding-top: 16px; border-top: 1px solid var(--rule); color: var(--muted); font-size: 12.5px; }
+  footer .zh { font-family: "Noto Sans TC", sans-serif; }
+</style>
+</head>
+<body>
+<div class="wrap"><article class="paper">
+<div class="stripe" aria-hidden="true"><span style="background:var(--mit)"></span><span style="background:var(--adv)"></span><span style="background:var(--nv)"></span></div>
+<div class="inner">
+
+<div class="kicker">Field Notes · Issue 01</div>
+<h1>What I Learned About MIT LGO from an Alum</h1>
+<p class="h1-zh">從 LGO 校友身上學到的事</p>
+<div class="meta">Small-group session with an LGO alum · October 8, 2026 · Notes by Bo-Wei (Allen) Tsai<br>
+<span style="font-family:'Noto Sans TC',sans-serif">LGO 校友小組分享 · 2026 年 10 月 8 日 · 筆記整理:蔡柏惟</span></div>
+
+<div class="bi">
+  <p class="en">An hour-long conversation about what LGO is really looking for, how the program works, and what someone early in their career should be doing now. The takeaway I keep coming back to: <strong>operations first, the story second.</strong></p>
+  <p class="zh">一小時的對談,談 LGO 真正在找什麼樣的人、課程怎麼運作,以及職涯初期現在該做什麼。我最常回想的一句話:<strong>先做營運,故事其次。</strong></p>
+</div>
+
+<div class="note bi">
+  <p class="en"><strong>Read me first.</strong> These are my personal notes, cleaned up afterwards and cross-checked against the official LGO website where possible. Items marked <span class="tag">unverified</span> are my best reading of what was said. Treat lgo.mit.edu as the source of truth.</p>
+  <p class="zh">這是我的個人筆記,會後整理並盡量對照 LGO 官網。標註 unverified 的部分是我對現場內容的理解,未經證實。一切以 lgo.mit.edu 為準。</p>
+</div>
+
+<h2><span class="num">01</span>The alum’s path <span class="zh">校友的經歷</span></h2>
+<ul class="bil">
+  <li class="bi"><p class="en">Before LGO: <strong>test engineer</strong>, focused on hands-on engineering and problem solving.</p>
+      <p class="zh">進 LGO 前是測試工程師,工作重心是實作工程與解決問題。</p></li>
+  <li class="bi"><p class="en">LGO internship in <strong>the U.S.</strong>, in energy systems and electric power.</p>
+      <p class="zh">LGO 實習在美國,做能源系統與電力相關。</p></li>
+  <li class="bi"><p class="en">Built an <strong>AI center from scratch</strong>. <span class="tag">unverified</span> Unclear whether during the internship or after.</p>
+      <p class="zh">從零建立 AI 中心。不確定是在實習期間還是畢業後。</p></li>
+  <li class="bi"><p class="en">His current role is <strong>not PM</strong>, but on the product side, between business and engineering.</p>
+      <p class="zh">現在的角色不是 PM,而是偏產品端,橫跨商業與工程兩邊。</p></li>
+</ul>
+
+<h2><span class="num">02</span>How LGO works <span class="zh">LGO 怎麼運作</span></h2>
+<h3>The internship <span class="zh">實習</span></h3>
+<div class="bi">
+  <p class="en">Six months, embedded at a partner company, working on a real operations problem that becomes the basis of the master’s thesis. The alum’s point: most of the work is talking to people.</p>
+  <p class="zh">為期六個月,進駐合作企業處理真實的營運問題,成果就是碩士論文的基礎。校友強調:大部分工作其實是跟人溝通。</p>
+</div>
+
+<h3>Partner companies <span class="zh">合作企業</span></h3>
+<div class="bi">
+  <p class="en">Caterpillar came up repeatedly. It has been an LGO partner since 2009, offering projects in supply chain, operations, and technical areas like welding, and it runs a leadership program specifically for LGO graduates. More broadly, partner companies fund most of the program and every student is guaranteed a partner internship.</p>
+  <p class="zh">Caterpillar(開拓重工)被反覆提到。它從 2009 年起就是 LGO 合作企業,提供供應鏈、營運,以及焊接等技術領域的題目,也有專門給 LGO 畢業生的領導人才計畫。整體來說,LGO 大部分經費來自合作企業,每位學生都保證能拿到合作企業的實習。</p>
+</div>
+
+<h3>Beyond class <span class="zh">課外</span></h3>
+<ul class="bil">
+  <li class="bi"><p class="en"><strong>Energy Club</strong>: exposure to many domains and the wider ecosystem, plus visiting speakers.</p>
+      <p class="zh">能源社:接觸各種領域與產業生態系,也會邀請講者分享。</p></li>
+  <li class="bi"><p class="en"><strong>Plant Trek</strong>: the class visits partner sites to discuss operations challenges with leadership. <span class="tag">unverified</span> China and Thailand were mentioned; international trips aren’t confirmed on the official site.</p>
+      <p class="zh">工廠參訪:全班到合作企業現場,與高層討論營運挑戰。現場提到中國、泰國,但官網上沒有確認海外行程。</p></li>
+  <li class="bi"><p class="en"><strong>Classmates</strong>: very different backgrounds, which is itself a big part of the learning.</p>
+      <p class="zh">同學背景差異很大,這本身就是重要的學習來源。</p></li>
+</ul>
+
+<h2><span class="num">03</span>What LGO looks for <span class="zh">LGO 看重什麼</span></h2>
+<div class="pull bi">
+  <p class="en">“Operation is key.”</p>
+  <p class="zh">「營運是關鍵。」整場反覆出現的是對營運的熱情(passion for operation)。</p>
+</div>
+<div class="bi">
+  <p class="en">Many people in LGO are strong engineers with no commercial experience who suddenly find themselves thinking about strategy. What makes someone stand out is a genuine passion for operations, and the ability to tie product development back to it.</p>
+  <p class="zh">LGO 裡很多人是很強的工程師,沒有任何商業經驗,卻開始思考策略。能脫穎而出的,是對營運有真正熱情,並能把產品開發和營運連在一起的人。</p>
+</div>
+<ul class="bil">
+  <li class="bi"><p class="en">Academics emphasize <strong>working in teams</strong>. These points came from LGO’s Director of Academics, Research, and Careers.</p>
+      <p class="zh">學術面強調團隊合作。這部分來自 LGO 學術、研究與職涯主任。</p></li>
+  <li class="bi"><p class="en">Supply chain is a core area. Classmates will be excited to learn from <em>your</em> experience, so what you bring matters.</p>
+      <p class="zh">供應鏈是核心領域。同學會很期待向你學習,所以你帶進去的經驗很重要。</p></li>
+  <li class="bi"><p class="en">Be someone who helps <strong>bridge the LGO community</strong>.</p>
+      <p class="zh">成為連結 LGO 社群的人。</p></li>
+</ul>
+
+<h2><span class="num">04</span>Advice for the early stage <span class="zh">給職涯初期的建議</span></h2>
+<div class="card">
+<ul class="bil">
+  <li class="bi"><p class="en"><strong>Learn operations first.</strong> Get close to where the work happens: go out to the field, take the hard jobs.</p>
+      <p class="zh">先學營運。靠近工作現場:到現場去,接下困難的工作。</p></li>
+  <li class="bi"><p class="en"><strong>Build technical muscle.</strong> Aim to solve 3–4 problems people consider unsolvable. After that, people start seeking you out.</p>
+      <p class="zh">練技術肌肉。目標是解決 3 到 4 個被認為無解的問題,之後別人會主動來找你。</p></li>
+  <li class="bi"><p class="en"><strong>It’s okay not to be crystal clear</strong> at first, but have a vision, an idea, and a narrative.</p>
+      <p class="zh">一開始方向不清楚沒關係,但要有願景、想法和一條敘事主線。</p></li>
+  <li class="bi"><p class="en"><strong>Know what you want to do after LGO.</strong> The application will ask.</p>
+      <p class="zh">想清楚 LGO 畢業後想做什麼,申請時會被問到。</p></li>
+  <li class="bi"><p class="en">Ask yourself what you hope to accomplish in LGO, and stay open to the experience.</p>
+      <p class="zh">問自己希望在 LGO 完成什麼,並對這段經歷保持開放。</p></li>
+</ul>
+</div>
+
+<h2><span class="num">05</span>The Pre-LGO Pipeline <span class="zh">LGO 預備計畫</span></h2>
+<div class="bi">
+  <p class="en">The most useful thing I learned about. It’s built for people who aren’t ready to apply yet.</p>
+  <p class="zh">這是我覺得最有用的資訊,專為還沒準備好申請的人設計。</p>
+</div>
+<table>
+  <tr><td>Who it’s for<span class="zh">對象</span></td><td>Recent STEM graduates, or early-career STEM professionals with about 1–2 years of experience<span class="zh">STEM 應屆畢業生,或工作約 1 到 2 年的 STEM 新鮮人</span></td></tr>
+  <tr><td>Format<span class="zh">形式</span></td><td>Keep your job; join yearly online seminars for up to 3 years, with coaching and an LGO alum mentor<span class="zh">保留工作,參加每年的線上研討課,最多三年,有教練與 LGO 校友 mentor</span></td></tr>
+  <tr><td>Application<span class="zh">申請文件</span></td><td>Resume, transcript, statement of interest, a short-answer question, and two recommendations (one work/leadership, one technical)<span class="zh">履歷、成績單、動機陳述、一題簡答,加兩封推薦信(一封職場或領導、一封技術)</span></td></tr>
+  <tr><td>This cycle<span class="zh">本屆時程</span></td><td>Deadline April 16, 2027; interviews in May; decisions in June; first seminar October 2027<span class="zh">2027 年 4 月 16 日截止,5 月面試,6 月放榜,10 月第一次研討課</span></td></tr>
+  <tr><td>Important<span class="zh">注意</span></td><td>It is <strong>not</strong> deferred admission to LGO. It’s preparation, not a guaranteed seat.<span class="zh">這<strong>不是</strong> LGO 的延後入學,是培訓,不保證錄取。</span></td></tr>
+</table>
+<div class="bi">
+  <p class="en">Questions about the pipeline go to the LGO staff who oversee strategic initiatives (see Contacts below). Details are from the official page as of October 2026 and may change.</p>
+  <p class="zh">預備計畫的問題可以找負責 LGO 策略計畫的職員(見下方聯絡方式)。以上資訊來自 2026 年 10 月的官網,之後可能變動。</p>
+</div>
+
+<h2><span class="num">06</span>Contacts <span class="zh">聯絡方式</span></h2>
+<ul class="bil">
+  <li>LGO admissions 招生:<a href="mailto:lgo@mit.edu">lgo@mit.edu</a></li>
+  <li>Pre-LGO Pipeline 預備計畫:<a href="mailto:mitlgo-pipeline@mit.edu">mitlgo-pipeline@mit.edu</a></li>
+  <li>Program site 官網:<a href="https://lgo.mit.edu" target="_blank" rel="noopener">lgo.mit.edu</a></li>
+</ul>
+
+<footer>
+  Personal notes, unofficial. Not an official MIT, LGO, Advantech, or NVIDIA publication. Please don’t repost.<br>
+  <span class="zh">個人筆記,非官方內容。非 MIT、LGO、研華或 NVIDIA 官方內容,請勿轉載。</span>
+</footer>
+
+</div>
+</article></div>
+</body>
+</html>

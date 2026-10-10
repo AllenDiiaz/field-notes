@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="320" viewBox="0 0 1280 320" role="img" aria-labelledby="t d">
+  <title id="t">Field Notes</title>
+  <desc id="d">Notes from conversations on operations, engineering, and leadership</desc>
+  <rect width="1280" height="320" fill="#0D1117"/>
+  <!-- hairline grid -->
+  <g stroke="#8A8B8C" stroke-opacity="0.18" stroke-width="1">
+    <path d="M80 0V320M1200 0V320M0 64H1280M0 256H1280"/>
+  </g>
+  <!-- accent band: red main + thin colour strip (lifted for dark bg) -->
+  <rect x="80" y="96" width="72" height="6" fill="#D9475C"/>
+  <rect x="156" y="96" width="12" height="6" fill="#5B8BD9"/>
+  <rect x="172" y="96" width="12" height="6" fill="#5DB37E"/>
+  <text x="80" y="186" fill="#F0F2F5" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="76" font-weight="800" letter-spacing="-2">Field Notes</text>
+  <text x="82" y="228" fill="#A8ADB4" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="22" font-weight="400">Notes from conversations on operations, engineering, and leadership</text>
+  <text x="1200" y="292" fill="#8A8B8C" text-anchor="end" font-family="'SFMono-Regular', Menlo, Consolas, monospace" font-size="14" letter-spacing="2">PERSONAL · UNOFFICIAL</text>
+</svg>
